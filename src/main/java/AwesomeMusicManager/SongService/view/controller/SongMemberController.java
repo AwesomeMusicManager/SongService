@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(value = "Songs")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(SongMemberController.RESOURCE)
 public class SongMemberController {
 

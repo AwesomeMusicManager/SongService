@@ -1,5 +1,6 @@
 package AwesomeMusicManager.SongService.persistence.mongo.document;
 
+import AwesomeMusicManager.SongService.view.model.request.YoutubeLinkRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,5 +27,9 @@ public class SongDocument {
     private String name;
 
     private String album;
+
+    private String lyric;
+
+    private YoutubeLinkRequest youtube;
 
 }

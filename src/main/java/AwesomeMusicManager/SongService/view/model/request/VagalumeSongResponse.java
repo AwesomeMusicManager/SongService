@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class VagalumeSongRequestArtist {
+public class VagalumeSongResponse {
 
-    private String title;
-    private String band;
+    private VagalumeSongRequest response;
 
 }

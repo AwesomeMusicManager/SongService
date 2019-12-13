@@ -17,7 +17,7 @@ public class SongSaverService {
         this.songRepository = songRepository;
     }
 
-    public Song save(@Valid Song song) {
+    public Song save(Song song) {
         return songRepository.save(song);
     }
 }

@@ -1,5 +1,6 @@
 package AwesomeMusicManager.SongService.domain.model;
 
+import AwesomeMusicManager.SongService.view.model.request.YoutubeLinkRequest;
 import lombok.*;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.hibernate.validator.constraints.br.CPF;
@@ -26,7 +27,10 @@ public class Song {
     @NotNull
     private String name;
 
-    @NotNull
     private String album;
+
+    private YoutubeLinkRequest youtube;
+
+    private String lyric;
 
 }

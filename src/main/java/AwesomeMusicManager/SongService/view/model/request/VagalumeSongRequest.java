@@ -13,8 +13,7 @@ import java.util.List;
 @Builder
 public class VagalumeSongRequest {
 
-    private String type;
-    private List<VagalumeSongRequestMusic> mus;
-    private VagalumeSongRequestArtist art;
+    private int numFound;
+    private List<VagalumeSongRequestArtist> docs;
 
 }

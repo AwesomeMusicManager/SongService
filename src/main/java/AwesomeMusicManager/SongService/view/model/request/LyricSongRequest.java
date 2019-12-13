@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class VagalumeSongRequestArtist {
+public class LyricSongRequest {
 
-    private String title;
-    private String band;
+    private String lyric;
 
 }

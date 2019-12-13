@@ -32,6 +32,8 @@ public class SongMongoDao implements SongRepository {
                 .album(song.getAlbum())
                 .singer(song.getSinger())
                 .name(song.getName())
+                .lyric(song.getLyric())
+                .youtube(song.getYoutube())
                 .build();
 
         SongDocument salvedUser = mongoTemplate.save(songDocument);
@@ -67,6 +69,8 @@ public class SongMongoDao implements SongRepository {
                 .album(songDocument.getAlbum())
                 .singer(songDocument.getSinger())
                 .name(songDocument.getName())
+                .lyric(songDocument.getLyric())
+                .youtube(songDocument.getYoutube())
                 .build();
     }
 }

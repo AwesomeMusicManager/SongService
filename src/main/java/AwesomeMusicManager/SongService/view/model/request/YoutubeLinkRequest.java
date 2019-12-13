@@ -9,9 +9,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class VagalumeSongRequestArtist {
+public class YoutubeLinkRequest {
 
+    private String id;
+    private String link;
+    private String author;
     private String title;
-    private String band;
+    private String description;
+
 
 }
