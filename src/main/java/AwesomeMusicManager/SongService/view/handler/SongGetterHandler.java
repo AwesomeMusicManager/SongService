@@ -3,6 +3,7 @@ package AwesomeMusicManager.SongService.view.handler;
 import AwesomeMusicManager.SongService.domain.model.Song;
 import AwesomeMusicManager.SongService.domain.service.SongGetterService;
 import AwesomeMusicManager.SongService.domain.service.SongSaverService;
+import AwesomeMusicManager.SongService.helpers.rabbitmq.RabbitMQSender;
 import AwesomeMusicManager.SongService.view.model.request.LyricSongRequest;
 import AwesomeMusicManager.SongService.view.model.request.VagalumeSongResponse;
 import AwesomeMusicManager.SongService.view.model.request.YoutubeLinkRequest;
@@ -17,16 +18,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class SongGetterHandler {
 
+    @Autowired
+    private final RabbitMQSender rabbitMQSender;
+
     private final SongGetterService songGetterService;
     private final SongSaverService songSaverService;
     private final FetchSong fetchSong;
     private final FetchLyric fetchLyric;
     private final FetchStream fetchStream;
 
+
     private final String link = "https://www.youtube.com/watch?v=";
 
     @Autowired
-    public SongGetterHandler(SongGetterService songGetterService, SongSaverService songSaverService, FetchSong fetchSong, FetchLyric fetchLyric, FetchStream fetchStream) {
+    public SongGetterHandler(RabbitMQSender rabbitMQSender, SongGetterService songGetterService, SongSaverService songSaverService, FetchSong fetchSong, FetchLyric fetchLyric, FetchStream fetchStream) {
+        this.rabbitMQSender = rabbitMQSender;
         this.songGetterService = songGetterService;
         this.songSaverService = songSaverService;
         this.fetchSong = fetchSong;
@@ -72,7 +78,7 @@ public class SongGetterHandler {
                         .lyric(lyric.getBody().getLyric())
                         .youtube(youtubeLinkRequest.getBody())
                         .build();
-                songSaverService.save(mappedSong);
+                rabbitMQSender.send(mappedSong);
             }).start();
 
             return ResponseEntity.ok(response);
